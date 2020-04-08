@@ -4,4 +4,6 @@ require('@babel/register')({});
 
 console.log("BABEL LOADED!");
 
-module.exports = require('./index.js');
+let args = process.argv.slice(2);
+
+module.exports = require('./' + args[0]);
