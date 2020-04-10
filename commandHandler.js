@@ -37,7 +37,14 @@ class CommandHandler {
       if (parsed.cmd.trim() == '') return;
 
       try {
-         const result = commandMap[parsed.cmd].payload({...this.api, message}, parsed.args);
+         const result = commandMap[parsed.cmd].payload({...this.api, message, commandMap}, parsed.args);
+         if (result === 2) {
+            const prefix = this.api.settingsManager.getAttribute('prefix');
+            message.channel.send(`Usage: ${prefix}${parsed.cmd} ${commandMap[parsed.cmd].usage}`);
+         }
+         if (result === 1) {
+            message.channel.send(`There was a problem running that command.`);
+         } 
       } catch (err) {
          console.log(err);
          message.channel.send(`Command "${parsed.cmd}" not found.`);
