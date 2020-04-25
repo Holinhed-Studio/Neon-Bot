@@ -12,7 +12,7 @@ function payload(api, args) {
 const setPrefix = {
    name: 'setPrefix',
    desc: 'Changes the command prefix.',
-   usage: '<prefix>',
+   usuage: '<prefix>',
    author: 'Holinhed',
    payload,
 }

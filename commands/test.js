@@ -7,7 +7,7 @@ function payload(api, args) {
 const identifier = {
    name: 'test',
    desc: 'a test command.',
-   usage: '',
+   usuage: '',
    author: 'Holinhed',
    payload,
 };

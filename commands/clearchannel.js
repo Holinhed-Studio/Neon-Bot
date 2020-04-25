@@ -1,7 +1,7 @@
 'use strict'
 
 function payload(api, args) {
-   // lol doesn't work
+   api.message.channel.send('This feature is not yet implemented.');
 }
 
 const clearChannel = {

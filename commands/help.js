@@ -21,7 +21,7 @@ function commandPayload(api, args) {
 
    const prefix = api.settingsManager.getAttribute('prefix');
    const usage = cmdObj.usage || '';
-   const toSend = `**Name:** ${command}\n**Description:** ${cmdObj.desc}\n**Usuage:** ${prefix}${command} ${usage}\n**Author:** ${cmdObj.author}`;
+   const toSend = `**Name:** ${command}\n**Description:** ${cmdObj.desc}\n**Usuage:** ${prefix}${command} ${usage}\n**Permissions:** ${cmdObj.permissions}\n**Author:** ${cmdObj.author}`;
 
    api.message.channel.send(toSend);
 }
@@ -30,7 +30,7 @@ const system_help = {
    name: "help",
    desc: "Gets documentation about a command.",
    permissions: 1,
-   usage: "<command>",
+   usuage: "<command>",
    payload: commandPayload,
    author: "Holinhed",
 }
