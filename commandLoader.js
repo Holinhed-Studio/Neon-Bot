@@ -30,6 +30,11 @@ async function loadCommands() {
          return;
       }
 
+      if (command.permissions < 0) {
+         console.log(`[ERROR] FAILED TO LOAD command ${command.name} because it has a negetive permission level.`);
+         return;
+      }
+
       commandMap = {...commandMap, [command.name]: command};
    });
 

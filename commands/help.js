@@ -20,8 +20,8 @@ function commandPayload(api, args) {
    }
 
    const prefix = api.settingsManager.getAttribute('prefix');
-   const usage = cmdObj.usage || '';
-   const toSend = `**Name:** ${command}\n**Description:** ${cmdObj.desc}\n**Usuage:** ${prefix}${command} ${usage}\n**Permissions:** ${cmdObj.permissions}\n**Author:** ${cmdObj.author}`;
+   const usuage = cmdObj.usuage || '';
+   const toSend = `**Name:** ${command}\n**Description:** ${cmdObj.desc}\n**Usuage:** ${prefix}${command} ${usuage}\n**Perm Level:** ${cmdObj.permissions || 0}\n**Author:** ${cmdObj.author}`;
 
    api.message.channel.send(toSend);
 }
