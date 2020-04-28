@@ -14,6 +14,21 @@ function list(api) {
 
 function addSuperUser(api, args) {
 
+   if (args[0].toLowerCase() == 'add') {
+
+      return;
+   }
+
+   if (args[0].toLowerCase() == 'remove') {
+
+      return;
+   }
+
+   if (args[0].toLowerCase() == 'list') {
+      
+      return;
+   }
+
 }
 
 function set(api, args) {
@@ -35,6 +50,11 @@ function payload(api, args) {
 
    if (args[0].toLowerCase().trim() == 'set') {
 
+      return;
+   }
+
+   if (args[0].toLowerCase().trim() == 'sudoers') {
+      addSuperUser({...api, permissions}, args.splice(1));
       return;
    }
 
