@@ -14,6 +14,7 @@ const setPrefix = {
    desc: 'Changes the command prefix.',
    usuage: '<prefix>',
    author: 'Holinhed',
+   permissions: 100,
    payload,
 }
 
