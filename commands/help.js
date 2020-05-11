@@ -21,7 +21,8 @@ function commandPayload(api, args) {
 
    const prefix = api.settingsManager.getAttribute('prefix');
    const usuage = cmdObj.usuage || '';
-   const toSend = `**Name:** ${command}\n**Description:** ${cmdObj.desc}\n**Usuage:** ${prefix}${command} ${usuage}\n**Perm Level:** ${cmdObj.permissions || 0}\n**Author:** ${cmdObj.author}`;
+   const authorout = cmdObj.author ? `**Author:** ${cmdObj.author}` : ''
+   const toSend = `**Name:** ${command}\n**Description:** ${cmdObj.desc}\n**Usuage:** ${prefix}${command} ${usuage}\n**Perm Level:** ${cmdObj.permissions || 0}\n${authorout}`;
 
    api.message.channel.send(toSend);
 }

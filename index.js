@@ -35,7 +35,7 @@ bot.on('message', async message => {
 
 bot.on('ready', function() {
    //bot.user.setStatus('online', 'INDEV v1'); 
-   console.log('(virgin hacker voice) I\'m in!');
+   console.log('Discord login successful');
 });
 
 bot.login(KEY)

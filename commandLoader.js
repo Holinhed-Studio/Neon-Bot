@@ -3,6 +3,7 @@
 const path = require('path');
 const util = require('util');
 const fs = require('fs');
+const getExtension = require('./lib/extensionGetter');
 
 const readdir = util.promisify(fs.readdir);
 
@@ -19,11 +20,20 @@ async function loadCommands() {
    } catch (err) {
       console.log("[CRITICAL] FAILED TO LOAD COMMANDS!");
       console.log(err);
+      return;
    }
 
    files.forEach(file => {
 
+      const ext = getExtension(file);
+
+      if (ext != 'js') return;
+
       let command = require(dirPath + path.sep + file);
+
+      if (command instanceof require('./lib/parentcommand')) {
+         command.load();
+      }
 
       if (commandMap[command.name]) {
          console.log(`[ERROR] FAILED TO LOAD command ${command.name} because a command by that name already exists.`);
@@ -38,6 +48,7 @@ async function loadCommands() {
       commandMap = {...commandMap, [command.name]: command};
    });
 
+   console.log("COMMANDS LOADED, READY!")
    return commandMap;
 }
 
