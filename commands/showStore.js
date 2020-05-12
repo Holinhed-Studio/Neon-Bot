@@ -22,7 +22,7 @@ module.exports = {
    name: "showStore",
    desc: "Shows the current store.",
    permissions: 100,
-   usuage: "<key>",
+   usage: "<key>",
    author: 'Holinhed',
    payload,
 };

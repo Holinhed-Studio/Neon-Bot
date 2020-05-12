@@ -6,7 +6,7 @@ function payload(api, args) {
       return 2;
    }
 
-   const amount = parseInt(args[0]);
+   const amount = parseInt(args[0]) + 1;
 
    if (amount > 100 || amount < 1) {
       api.message.channel.send('[bulkdelete] Amount has to be between 1-100.');
@@ -19,8 +19,9 @@ function payload(api, args) {
 const bulkDelete = {
    name: 'bulkDelete',
    desc: 'Clears specificed amount of messages in channel it\'s executed in',
-   usuage: '<amount>',
+   usage: '<amount>',
    author: 'Holinhed',
+   version: '1.0',
    payload,
 }
 

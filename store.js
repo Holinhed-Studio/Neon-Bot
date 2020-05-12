@@ -1,5 +1,7 @@
 'use strict'
 
+const colors = require('./lib/consolecolors.js');
+
 class Store {
 
    constructor() {
@@ -7,10 +9,16 @@ class Store {
    }
 
    pushKey(key, value) {
+      //DEPRECATED
+      console.log(colors.format(colors.fg.yellow), '[WARNING] api.store.pushKey(k,v) is deprecated! Please use api.store.set(k,v) instead.');
       this.data = {...this.data, [key]: value};
    }
 
    set(key, value) {
+      if (!this.data[key]) {
+         this.data = {...this.data, [key]: value};
+         return;
+      } 
       this.data[key] = value;
    }
 
@@ -27,15 +35,23 @@ class Store {
    }
 
    exists(key) {
-      return this.get(key) ? true : false;
+      return this.data[key] ? true : false;
    }
 
-   saveState(state) {
-      console.log('You just tried to save a state. This feature is not implemented yet.');
+   loadState(key) {
+      console.log(colors.format(colors.fg.blue), 'You just tried to load a state. This feature is not implemented yet.');
+   }
+
+   loadStates() {
+      console.log(colors.format(colors.fg.blue), 'You just tried to load a state. This feature is not implemented yet.');
+   }
+
+   saveState(key) {
+      console.log(colors.format(colors.fg.blue), 'You just tried to save a state. This feature is not implemented yet.');
    }
 
    saveStates() {
-      console.log('You just tried to save states. This featuer is not implemented yet.');
+      console.log(colors.format(colors.fg.blue), 'You just tried to save states. This feature is not implemented yet.');
    }
 
 }

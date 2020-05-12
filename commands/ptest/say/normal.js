@@ -2,7 +2,7 @@
 
 module.exports = {
    name: 'normal',
-   usuage: '<message>',
+   usage: '<message>',
    payload(api, args) {
 
       if (args.length < 1) return 2;

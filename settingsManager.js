@@ -16,8 +16,6 @@ const DEFAULTSETTINGS = {
 class SettingsManager {
 
    constructor() {
-      //this.settings = JSON.parse(fs.readFileSync('settings.json'));
-
       let settingsfile;
 
       try {
@@ -35,20 +33,32 @@ class SettingsManager {
       this.settings = JSON.parse(settingsfile);
    }
 
-   get() {
+   getGlobal() {
       return this.settings;
    }
 
-   set(newSettings) {
+   setGlobal(newSettings) {
       this.settings = newSettings;
    }
 
+   get(key) {
+      return this.settings[key];
+   }
+
+   set(key, value) {
+      this.settings[key] = value;
+   }
+
    getAttribute(att) {
-      return this.settings[att];
+      //DEPRECATED
+      console.log(colors.format(colors.fg.yellow), '[WARNING] api.settingsManager.getAttribute(a) is deperecated! Please use api.setttingsManager.get(k).');
+      return this.get(att);
    }
 
    setAttribute(att, value) {
-      this.settings[att] = value;
+      //DEPRECATED
+      console.log(colors.format(colors.fg.yellow), '[WARNING] api.settingsManager.setAttribute(a,v) is deperecated! Please use api.setttingsManager.set(k,v).');
+      this.set(att, value);
    }
 
    writeToFile() {

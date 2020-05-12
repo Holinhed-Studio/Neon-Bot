@@ -3,7 +3,13 @@ function payload(api, args) {
       return 2;
    }
 
-   api.settingsManager.setAttribute('prefix', args[0]);
+   //temp fix
+   if (args[0].length != 1) {
+      api.message.channel.send('The new prefix must be a single character.');
+      return;
+   }
+
+   api.settingsManager.set('prefix', args[0]);
    api.settingsManager.save();
 
    api.message.channel.send(`Prefix has been changed to: ${args[0]}`);
@@ -12,7 +18,7 @@ function payload(api, args) {
 const setPrefix = {
    name: 'setPrefix',
    desc: 'Changes the command prefix.',
-   usuage: '<prefix>',
+   usage: '<prefix>',
    author: 'Holinhed',
    permissions: 100,
    payload,

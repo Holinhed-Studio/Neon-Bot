@@ -7,7 +7,7 @@ function commandPayload(api, args) {
    }
 
    if (!api.store.get('test')) {
-      api.store.pushKey('test', "");
+      api.store.pushKey('test', '');
    }
    
    if (args[0].trim().length != 1) {
@@ -25,7 +25,7 @@ const system_help = {
    name: "modifystate",
    desc: "Test for state management.",
    permissions: 100,
-   usuage: "<value>",
+   usage: "<value>",
    payload: commandPayload,
    author: "Holinhed",
 }

@@ -29,6 +29,8 @@ class CommandHandler {
       //no command 
       if (parsed.cmd.trim() == '') return;
 
+      //TODO: replace with parentcommand
+
       try {
          const permLevel = permFinder.byMessage(message, this.api.settingsManager);
          if (commandMap[parsed.cmd] && permLevel < commandMap[parsed.cmd].permissions && permLevel != -1) {
@@ -39,7 +41,7 @@ class CommandHandler {
          const result = commandMap[parsed.cmd].payload({...this.api, message, commandMap}, parsed.args);
          if (result === 2) {
             const prefix = this.api.settingsManager.getAttribute('prefix');
-            message.channel.send(`Usuage: ${prefix}${parsed.cmd} ${commandMap[parsed.cmd].usuage || ''}`);
+            message.channel.send(`Usage: ${prefix}${parsed.cmd} ${commandMap[parsed.cmd].usage || ''}`);
          }
          if (result === 1) {
             message.channel.send(`There was a problem running that command.`);
@@ -48,9 +50,7 @@ class CommandHandler {
          console.log(err);
          message.channel.send(`Command "${parsed.cmd}" not found.`);
       }
-
    }
-
 }
 
 module.exports = CommandHandler;

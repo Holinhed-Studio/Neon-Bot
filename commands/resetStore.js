@@ -13,6 +13,10 @@ function payload(api, args) {
    }
 
    if (api.store.get('cmd_resetstore') == 1) {
+      if (args.length != 1) {
+         api.message.channel.send('Please type CONFIRM as an argument to confirm. CANCEL to cancel.');
+         return;
+      }
       if (args[0].toUpperCase() == 'CONFIRM') {
          api.store.clearStore();
          api.message.channel.send('Store has been reset.');

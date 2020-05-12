@@ -26,6 +26,6 @@ module.exports = {
    desc: "Displays a list of commands.",
    permissions: 100,
    author: "Holinhed",
-   usuage: '<?permissionLevel>',
+   usage: '<?permissionLevel>',
    payload,
 }

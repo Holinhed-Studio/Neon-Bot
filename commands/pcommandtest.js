@@ -8,12 +8,9 @@ class TestCommand extends ParentCommand {
       super('ptest');
       this.desc = "testing the parent command class.";
       this.author = "Holinhed";
-      this.usage = "<test>";
       this.permissions = 999;
    }
 
 }
 
-const x = new TestCommand();
-
-module.exports = x;
+module.exports = new TestCommand();

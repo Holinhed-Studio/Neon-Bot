@@ -2,7 +2,7 @@
 
 function payload(api, args) {
 
-   const version = api.settingsManager.getAttribute('version');
+   const version = api.settingsManager.get('version');
 
    api.message.channel.send("Version: " + version);
 }

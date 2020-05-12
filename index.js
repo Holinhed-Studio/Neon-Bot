@@ -34,19 +34,17 @@ const commandHandler = new CommandHandler({Discord, settingsManager, bot, store}
 
 bot.on('message', async message => {
 
-   if (message.author.bot) {
-
-      return;
-   }
+   // no robot >:(
+   if (message.author.bot) return;
 
    // direct message
    if (message.channel.name === undefined) {
-      
+      message.reply('No implementation for direct messages.. yet..');
       return;
    }
 
    // channel
-   if (message.content[0] === settingsManager.getAttribute("prefix")) {
+   if (message.content[0] === settingsManager.get("prefix")) {
       const parsed = commandHandler.parse(message.content.substring(1));
       commandHandler.handle(parsed, message);   
    }

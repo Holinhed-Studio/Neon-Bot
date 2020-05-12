@@ -1,9 +1,8 @@
 'use strict'
 
-function commandPayload(api, args) {
-   
+function payload(api, args) {
    if (args.length == 0) {
-      api.message.reply("Here you go: http://fantasy.works/");
+      api.message.reply('Here you go! http://fantasy.works/');
       return;
    }
 
@@ -12,28 +11,33 @@ function commandPayload(api, args) {
    }
 
    const command = args[0];
-   const cmdObj = api.commandMap[command];
 
-   if (cmdObj == undefined) {
+   if (!api.commandMap[command]) {
       api.message.channel.send(`Command '${command}' does not exist.`);
       return;
    }
 
-   const prefix = api.settingsManager.getAttribute('prefix');
-   const usuage = cmdObj.usuage || '';
-   const authorout = cmdObj.author ? `**Author:** ${cmdObj.author}` : ''
-   const toSend = `**Name:** ${command}\n**Description:** ${cmdObj.desc}\n**Usuage:** ${prefix}${command} ${usuage}\n**Perm Level:** ${cmdObj.permissions || 0}\n${authorout}`;
+   const cmdObj = api.commandMap[command];
 
-   api.message.channel.send(toSend);
+   const prefix = api.settingsManager.get('prefix');
+
+   const nameOut = `**Name:** ${command}\n`; 
+   const descOut = `**Desc:** ${cmdObj.desc || 'No description provided.'}\n`;
+   const usageOut = `**Usage:** ${prefix}${command} ${cmdObj.usage || ''}\n`;
+   const versionOut = cmdObj.version ? `**Version:** ${cmdObj.version}\n` : '';
+   const authorOut = cmdObj.author ? `**Author:** ${cmdObj.author}\n` : '';
+
+   api.message.channel.send(nameOut + descOut + usageOut + versionOut + authorOut);
 }
 
 const system_help = {
    name: "help",
    desc: "Gets documentation about a command.",
    permissions: 1,
-   usuage: "<command>",
-   payload: commandPayload,
+   usage: "<command>",
+   payload: payload,
    author: "Holinhed",
+   version: '1.0',
 }
 
 module.exports = system_help;
