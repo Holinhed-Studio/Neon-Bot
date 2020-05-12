@@ -1,6 +1,7 @@
 'use strict'
 
 const fs = require('fs');
+const colors = require('./lib/consolecolors.js');
 
 const DEFAULTSETTINGS = {
    version: 'INDEV',
@@ -52,7 +53,9 @@ class SettingsManager {
 
    writeToFile() {
       fs.writeFile('settings.json', JSON.stringify(this.settings), err => {
-         if (err) console.log(err);
+         if (err) {
+            console.log(colors.format(colors.fg.red), '[CRITICAL] There was a problem saving settings to file');
+         }
       });
    }
 

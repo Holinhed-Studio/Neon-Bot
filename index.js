@@ -2,6 +2,7 @@
 
 const Discord = require('discord.js');
 const fs = require('fs');
+const colors = require('./lib/consolecolors.js');
 const SettingsManager = require('./settingsManager.js');
 const CommandHandler = require('./commandHandler.js');
 const Store = require('./store.js');
@@ -53,11 +54,14 @@ bot.on('message', async message => {
 });
 
 bot.on('ready', function() {
-   console.log('=== STARTUP COMPLETE ===');
+   console.log(colors.format(colors.bg.green, colors.fg.black), '=== STARTUP COMPLETE ===');
 });
 
 bot.login(KEY)
    .then(() => {
-      console.log('Discord login successful!');
+      console.log(colors.format(colors.fg.green), 'Discord login successful!');
    })
-   .catch(err => console.log(err));
+   .catch(err => {
+      console.log(colors.format(colors.fg.red), '[CRITICAL] Discord login failed. Perhaps the key is invalid?');
+      process.exit(0);
+   });
