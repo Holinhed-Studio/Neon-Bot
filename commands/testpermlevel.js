@@ -6,7 +6,8 @@ function payload(api, args) {
 
    if (args.length > 0) return 2;
 
-   const plevel = permFinder.byMessage(api.message, api.settingsManager);
+   //const plevel = permFinder.byMessage(api.message, api.settingsManager);
+   const plevel = api.permFinder.byMessage(api.message);
    const output = plevel == -1 ? '**Super User**' : plevel;
 
    api.message.reply('Your permission level is: ' + output);

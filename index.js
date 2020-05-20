@@ -5,11 +5,11 @@ const fs = require('fs');
 const colors = require('./lib/consolecolors.js');
 const SettingsManager = require('./lib/settingsManager.js');
 const CommandHandler = require('./lib/commandHandler.js');
+const PermFinder = require('./lib/permFinder.js');
 const Store = require('./lib/store.js');
 
 const bot = new Discord.Client();
 
-//let KEY = JSON.parse(fs.readFileSync('key.json')).key
 let KEY;
 
 try {
@@ -30,7 +30,22 @@ console.log("USING KEY: " + KEY);
 
 const settingsManager = new SettingsManager();
 const store = new Store();
-const commandHandler = new CommandHandler({Discord, settingsManager, bot, store});
+
+const permFinder = {
+   byMessage(message) {
+      return PermFinder.byMessage(message, settingsManager);
+   },
+
+   byId(id, message) {
+      return PermFinder.byId(id, message, settingsManager);
+   },
+
+   byRole(role) {
+      return PermFinder.byRole(role, settingsManager);
+   }
+}
+
+const commandHandler = new CommandHandler({Discord, settingsManager, bot, store, permFinder});
 
 bot.on('message', async message => {
 

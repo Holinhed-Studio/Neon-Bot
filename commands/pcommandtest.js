@@ -11,6 +11,9 @@ class TestCommand extends ParentCommand {
       this.permissions = 999;
    }
 
+   prepayload(api, args) {
+      api.message.channel.send('Hello there!');
+   }
 }
 
 module.exports = new TestCommand();
