@@ -3,9 +3,9 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const colors = require('./lib/consolecolors.js');
-const SettingsManager = require('./settingsManager.js');
-const CommandHandler = require('./commandHandler.js');
-const Store = require('./store.js');
+const SettingsManager = require('./lib/settingsManager.js');
+const CommandHandler = require('./lib/commandHandler.js');
+const Store = require('./lib/store.js');
 
 const bot = new Discord.Client();
 
