@@ -11,11 +11,10 @@ function payload(api, args) {
    if (max_level > 0) {
       output += "Showing list of commands with maximum permission level of " + max_level + "\n\n";
    }
-
-   for (const [key, val] of Object.entries(api.commandMap)) {
-      if (val.permissions <= max_level || max_level == 0) {
-         output += `**${val.name}**: ${val.desc}\n`;
-      }
+   
+   for (let key in api.commandMap) {
+      const val = api.commandMap[key];
+      output += `**${val.name}**: ${val.desc || 'No Description Provided.'}\n`;
    }
 
    api.message.channel.send(output);
@@ -27,5 +26,6 @@ module.exports = {
    permissions: 100,
    author: "Holinhed",
    usage: '<?permissionLevel>',
+   version: '1.0',
    payload,
 }

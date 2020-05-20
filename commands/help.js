@@ -13,8 +13,7 @@ function payload(api, args) {
    const command = args[0];
 
    if (!api.commandMap[command]) {
-      api.message.channel.send(`Command '${command}' does not exist.`);
-      return;
+      return { message: `Command '${command}' does not exist.` };
    }
 
    const cmdObj = api.commandMap[command];
@@ -37,7 +36,7 @@ const system_help = {
    usage: "<command>",
    payload: payload,
    author: "Holinhed",
-   version: '1.0',
+   version: '1.1',
 }
 
 module.exports = system_help;
