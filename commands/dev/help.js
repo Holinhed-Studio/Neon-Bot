@@ -12,7 +12,7 @@ module.exports = {
       //   out += item.name + "    " + item.desc + "\n";
       //});
 
-      for (const [key, val] of Object.entries(api.ptest.commandMap)) {
+      for (const [key, val] of Object.entries(api.parentcmd.commandMap)) {
          out += `**${val.name}**: ${val.desc}\n`;
       }
 

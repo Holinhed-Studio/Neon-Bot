@@ -1,6 +1,6 @@
 'use strict'
 
-const permFinder = require('../lib/permFinder.js');
+const permFinder = require('../../lib/permFinder.js');
 
 function payload(api, args) {
 

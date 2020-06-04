@@ -5,7 +5,7 @@ module.exports = {
    payload(api, args) {
       const permLevels = api.settingsManager.get('permissions').permLevels;
 
-      let output = '**Super User**: *\n';
+      let output = '';
 
       for (const [key, val] of Object.entries(permLevels)) {
          output += `**${key}:** ${val}\n`;

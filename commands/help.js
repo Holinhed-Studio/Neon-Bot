@@ -31,12 +31,12 @@ function payload(api, args) {
 
 const system_help = {
    name: "help",
-   desc: "Gets documentation about a command.",
+   desc: "Shows documentation about a command.",
    permissions: 1,
    usage: "<command>",
    payload: payload,
    author: "Holinhed",
-   version: '1.1',
+   version: '1.1.1',
 }
 
 module.exports = system_help;

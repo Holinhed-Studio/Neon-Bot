@@ -9,8 +9,8 @@ class PermissionManagementSystem extends ParentCommand {
       this.setMetadata({
          desc: 'Permission Management System.',
          author: 'Holinhed',
-         version: 'INDEV',
-         permissions: 100,
+         version: '1.0.0',
+         permissions: 50,
       });
    }
 }
