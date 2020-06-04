@@ -1,6 +1,6 @@
 {
   "name": "neon-bot",
-  "version": "1.0.0-0",
+  "version": "1.0.1-0",
   "description": "A customizable discord bot complete with an easy to use api for commands, and plugins.",
   "main": "index.js",
   "scripts": {
