@@ -38,7 +38,7 @@ const permFinder = {
 
    byId(id, message) {
       return PermFinder.byId(id, message, settingsManager);
-   },
+   }, 
 
    byRole(role) {
       return PermFinder.byRole(role, settingsManager);
@@ -54,16 +54,27 @@ bot.on('message', async message => {
 
    // direct message
    if (message.channel.name === undefined) {
-      message.reply('No implementation for direct messages.. yet..');
+      message.reply('Command rejected: Message was a DM.');
+      return;
+   }
+
+   // ignored servers
+   if (settingsManager.get("blacklist").includes(message.guild.id)) {
       return;
    }
 
    // channel
-   if (message.content[0] === settingsManager.get("prefix")) {
-      const parsed = commandHandler.parse(message.content.substring(1));
+   const prefix = settingsManager.get("prefix");
+   if (message.content.includes(prefix)) {
+      const parsed = commandHandler.parse(message.content.substring(prefix.length));
       commandHandler.handle(parsed, message);   
    }
 
+});
+
+bot.on('guildMemberAdd', async member => {
+   //member.guild.channels.get('channelID').send("Welcome"); 
+   
 });
 
 bot.on('ready', function() {

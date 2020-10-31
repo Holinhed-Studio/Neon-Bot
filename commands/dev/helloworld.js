@@ -8,6 +8,6 @@ module.exports = {
    payload(api, args) {
       //console.log('helloworld command was run');
      // api.message.channel.send('Hello, world!');
-      api.message.channel.send(JSON.stringify(api.ptest.commandMap));
+      api.message.channel.send("Hello, world!");
    }
 }

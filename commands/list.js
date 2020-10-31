@@ -14,7 +14,7 @@ function payload(api, args) {
    
    for (let key in api.commandMap) {
       const val = api.commandMap[key];
-      output += `**${val.name}**: ${val.desc || 'No Description Provided.'}\n`;
+      output += `${val.permissions} **${val.name}**: ${val.desc || 'No Description Provided.'}\n`;
    }
 
    api.message.channel.send(output);

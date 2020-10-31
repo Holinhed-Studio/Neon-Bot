@@ -18,6 +18,7 @@ function payload(api, args) {
 const bulkDelete = {
    name: 'bulkDelete',
    desc: 'Clears specificed amount of messages in channel it\'s executed in',
+   permissions: '20',
    usage: '<amount>',
    author: 'Holinhed',
    version: '1.1',

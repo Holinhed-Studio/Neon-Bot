@@ -13,7 +13,7 @@ module.exports = {
    name: "version",
    desc: "Shows version of the bot.",
    version: "1.0.0",
-   permissions: 25,
+   permissions: 10,
    author: "Holinhed",
    payload,
 };

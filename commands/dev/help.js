@@ -8,15 +8,9 @@ module.exports = {
 
       let out = "";
 
-      //api.ptest.commandMap.forEach(item => {
-      //   out += item.name + "    " + item.desc + "\n";
-      //});
-
       for (const [key, val] of Object.entries(api.parentcmd.commandMap)) {
-         out += `**${val.name}**: ${val.desc}\n`;
+         out += `**${key}**: ${val.desc}\n`;
       }
-
-      //console.log(api.ptest.commandMap)
 
       api.message.channel.send(out);
 

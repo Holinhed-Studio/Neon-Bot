@@ -3,12 +3,6 @@ function payload(api, args) {
       return 2;
    }
 
-   //temp fix
-   if (args[0].length != 1) {
-      api.message.channel.send('The new prefix must be a single character.');
-      return;
-   }
-
    api.settingsManager.set('prefix', args[0]);
    api.settingsManager.save();
 
